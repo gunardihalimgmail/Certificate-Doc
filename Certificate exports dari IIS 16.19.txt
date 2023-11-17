@@ -1,0 +1,45 @@
+1. Buka IIS Manager:
+Buka Internet Information Services (IIS) Manager di server Anda.
+
+2. Pilih Sertifikat:
+
+Pada panel kiri, klik pada nama server Anda di bawah "Connections".
+Buka bagian "Server Certificates".
+
+3. Pilih Sertifikat yang Akan diekspor:
+
+Klik dua kali pada sertifikat yang ingin Anda ekspor.
+
+4. Buka Tab "Details":
+
+Di jendela sertifikat, buka tab "Details".
+
+5. Klik "Copy to File...":
+
+Pada tab "Details", klik pada tombol "Copy to File..." yang akan membuka wizard Ekspor Sertifikat.
+
+6. Wizard Ekspor Sertifikat:
+
+Klik "Next" untuk melewati selamat datang.
+Pilih "Yes, export the private key" dan klik "Next".
+Pilih format ekspor, pilih "Personal Information Exchange - PKCS #12 (.PFX)" dan klik "Next".
+Tentukan lokasi dan nama file untuk menyimpan sertifikat yang diekspor, lalu klik "Next".
+Masukkan kata sandi untuk melindungi file PFX, dan pastikan Anda mengingat kata sandi ini. Klik "Next" dan kemudian "Finish".
+
+7. Membuka File PFX:
+
+Buka file PFX yang telah Anda buat di langkah sebelumnya. Windows mungkin meminta kata sandi yang Anda masukkan saat membuat file PFX.
+
+8. Ekspor Key dan Pem Cer:
+
+Dalam file PFX yang terbuka, ekspor kunci privat dan sertifikat publik.
+Untuk ekspor kunci privat (key), simpan bagian pribadi kunci ke dalam file dengan ekstensi ".key".
+Untuk ekspor sertifikat publik (pem cer), simpan sertifikat ke dalam file dengan ekstensi ".cer" atau ".pem".
+
+===== OPENSSL =====
+
+openssl pkcs12 -in path/to/your/file.pfx -nocerts -out path/to/your/private.key
+
+openssl pkcs12 -in path/to/your/file.pfx -clcerts -nokeys -out path/to/your/public.pem
+
+openssl x509 -inform PEM -outform DER -in path/to/public-cert.pem -out path/to/public-cert.cer

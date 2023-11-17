@@ -1,0 +1,27 @@
+namafile_test.csr (Certificated signing request)
+namafile_key.key
+
+namafile.crt (extensi certificate)
+
+alternatif lain (key dan pem) (ini valid) :
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout cert.key -out cert.pem -config req.cnf -sha256
+
+--> (hasil cer)
+openssl x509 -inform PEM -in cert.pem -outform DER -out cert.cer
+
+==========================================
+
+-out -> key dan csr
+openssl req -nodes -new -keyout ssl_test_personal.key -out ssl_test_csr.csr
+
+-out -> crt
+openssl x509 -req -days 365 -in ssl_test_csr.csr -signkey ssl_test_personal.key -out ssl_test_sertifikat.crt
+
+-out -> cer
+openssl x509 -inform PEM -in ssl_test_sertifikat.crt -outform DER -out ssl_test_sertifikat.cer
+
+
+
+
+
